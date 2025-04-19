@@ -6,6 +6,7 @@ services:
     buildCommand: |
       pip install --upgrade pip
       pip install -r requirements.txt
+      python manage.py collectstatic --noinput
     startCommand: gunicorn my_awesome_project.wsgi:application
     envVars:
       - key: DEBUG
