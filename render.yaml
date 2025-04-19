@@ -1,0 +1,16 @@
+# render.yaml
+services:
+  - type: web
+    name: my-awesome-project  # Change this to your project name
+    runtime: python
+    buildCommand: |
+      pip install --upgrade pip
+      pip install -r requirements.txt
+    startCommand: gunicorn my_awesome_project.wsgi:application
+    envVars:
+      - key: DEBUG
+        value: False
+      - key: SECRET_KEY
+        generateValue: true
+      - key: HF_API_KEY
+        value: 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  # Replace with your actual key
