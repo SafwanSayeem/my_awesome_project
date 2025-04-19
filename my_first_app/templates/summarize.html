@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="summarizer-container">
+    <form method="post" id="summarize-form">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="text-input">Enter your text:</label>
+            <textarea id="text-input" name="text" rows="10" placeholder="Paste your article, essay, or document here..."></textarea>
+        </div>
+        
+        <div class="options">
+            <label for="summary-length">Summary Length:</label>
+            <select id="summary-length" name="length">
+                <option value="short">Short (1-2 sentences)</option>
+                <option value="medium" selected>Medium (3-5 sentences)</option>
+                <option value="long">Long (5+ sentences)</option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn-summarize">Summarize</button>
+    </form>
+
+    <div class="result-container" id="result">
+        {% if summary %}
+            <h3>Summary:</h3>
+            <div class="summary-output">{{ summary }}</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
